@@ -1,7 +1,7 @@
 package warehouse.repositories;
 
 import org.springframework.data.repository.CrudRepository;
-import warehouse.entities.OrderEntity;
+import warehouse.models.Order;
 
-public interface OrderRepository extends CrudRepository<OrderEntity, Integer> {
+public interface OrderRepository extends CrudRepository<Order, Integer> {
 }

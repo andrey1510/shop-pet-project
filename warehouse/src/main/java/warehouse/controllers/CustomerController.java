@@ -1,12 +1,17 @@
 package warehouse.controllers;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import warehouse.entities.CustomerEntity;
+import warehouse.exceptions.CustomerNotFoundException;
+import warehouse.models.Customer;
 import warehouse.services.CustomerService;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/customer/")
+@Tag(name = "Customer controller", description = "Customer controller of Warehouse service")
 public class CustomerController {
 
     private CustomerService customerService;
@@ -17,7 +22,7 @@ public class CustomerController {
     }
 
     @PostMapping
-    public CustomerEntity createCustomer(@RequestBody CustomerEntity customer) {
+    public Customer createCustomer(@RequestBody Customer customer) {
         return customerService.createCustomer(customer);
     }
 
@@ -25,5 +30,12 @@ public class CustomerController {
     void deleteCustomerById(@PathVariable("customer_id") Integer customerId) {
         customerService.deleteCustomerById(customerId);
     }
+
+    @GetMapping("{customer_id}")
+    public Optional<Customer> getCustomerById(@PathVariable("customer_id") Integer customerId) {
+        return Optional.ofNullable(customerService.getCustomerById(customerId)
+                .orElseThrow(CustomerNotFoundException::new));
+    }
+
 
 }

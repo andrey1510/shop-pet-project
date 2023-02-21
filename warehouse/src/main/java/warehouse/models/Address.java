@@ -1,4 +1,4 @@
-package warehouse.entities;
+package warehouse.models;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -14,16 +14,16 @@ import java.util.Objects;
 @AllArgsConstructor
 @Entity
 @Table(name = "address")
-public class AddressEntity {
+public class Address {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "address_id", nullable = false)
     private Integer addressId;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @MapsId
-    private CustomerEntity customer;
+    @ManyToOne
+    @JoinColumn(name="customer_fk_id", nullable=true)
+    private Customer customers;
 
     @Basic
     @Column(name = "country", nullable = true, length = 255)
@@ -45,7 +45,7 @@ public class AddressEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        AddressEntity address = (AddressEntity) o;
+        Address address = (Address) o;
         return addressId != null && Objects.equals(addressId, address.addressId);
     }
 

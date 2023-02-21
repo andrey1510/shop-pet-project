@@ -1,10 +1,10 @@
 package warehouse.services;
 
-import warehouse.entities.ProductEntity;
+import warehouse.models.Product;
 
 public interface ProductService {
 
-    ProductEntity createProduct(ProductEntity product);
+    Product createProduct(Product product);
 
     void deleteProductById(Integer productId);
 

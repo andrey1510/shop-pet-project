@@ -1,10 +1,10 @@
 package warehouse.services;
 
-import warehouse.entities.AddressEntity;
+import warehouse.models.Address;
 
 public interface AddressService {
 
-    AddressEntity createAddress(AddressEntity address);
+    Address createAddress(Address address);
 
     void deleteAddressById(Integer addressId);
 

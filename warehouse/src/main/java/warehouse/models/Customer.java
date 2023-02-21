@@ -1,9 +1,10 @@
-package warehouse.entities;
+package warehouse.models;
 
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.Hibernate;
 
+import java.util.List;
 import java.util.Objects;
 
 @Getter
@@ -13,12 +14,15 @@ import java.util.Objects;
 @AllArgsConstructor
 @Entity
 @Table(name = "customer")
-public class CustomerEntity {
+public class Customer {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "customer_id", nullable = false)
     private Integer customerId;
+
+    @OneToMany(mappedBy="customers")
+    private List<Address> addresses;
 
     @Basic
     @Column(name = "first_name", nullable = false, length = 255)
@@ -44,7 +48,7 @@ public class CustomerEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        CustomerEntity customer = (CustomerEntity) o;
+        Customer customer = (Customer) o;
         return customerId != null && Objects.equals(customerId, customer.customerId);
     }
 

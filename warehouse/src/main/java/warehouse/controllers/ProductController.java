@@ -2,7 +2,7 @@ package warehouse.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import warehouse.entities.ProductEntity;
+import warehouse.models.Product;
 import warehouse.services.ProductService;
 
 @RestController
@@ -17,7 +17,7 @@ public class ProductController {
     }
 
     @PostMapping
-    public ProductEntity createProduct(@RequestBody ProductEntity product) {
+    public Product createProduct(@RequestBody Product product) {
         return productService.createProduct(product);
     }
 

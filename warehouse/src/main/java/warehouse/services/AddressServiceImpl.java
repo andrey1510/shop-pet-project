@@ -2,7 +2,7 @@ package warehouse.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import warehouse.entities.AddressEntity;
+import warehouse.models.Address;
 import warehouse.repositories.AddressRepository;
 
 @Service
@@ -12,7 +12,7 @@ public class AddressServiceImpl implements AddressService {
     private AddressRepository addressRepository;
 
     @Override
-    public AddressEntity createAddress(AddressEntity address) {
+    public Address createAddress(Address address) {
         return addressRepository.save(address);
     }
 

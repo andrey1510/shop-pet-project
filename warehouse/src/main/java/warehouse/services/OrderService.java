@@ -1,10 +1,10 @@
 package warehouse.services;
 
-import warehouse.entities.OrderEntity;
+import warehouse.models.Order;
 
 public interface OrderService {
 
-    OrderEntity createOrder(OrderEntity order);
+    Order createOrder(Order order);
 
     void deleteOrderById(Integer orderId);
 

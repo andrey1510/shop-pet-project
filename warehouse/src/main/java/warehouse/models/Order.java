@@ -1,9 +1,10 @@
-package warehouse.entities;
+package warehouse.models;
 
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.Hibernate;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 @Getter
@@ -12,21 +13,25 @@ import java.util.Objects;
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "product")
-public class ProductEntity {
+@Table(name = "order")
+public class Order {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "product_id", nullable = false)
-    private Integer productId;
+    @Column(name = "order_id", nullable = false)
+    private Integer orderId;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @MapsId
+    private Customer customer;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @MapsId
+    private Product product;
 
     @Basic
-    @Column(name = "title", nullable = false, length = 255)
-    private String title;
-
-    @Basic
-    @Column(name = "price", nullable = false)
-    private Integer price;
+    @Column(name = "price", nullable = false, precision = 2)
+    private BigDecimal price;
 
     @Basic
     @Column(name = "quantity", nullable = false)
@@ -36,8 +41,8 @@ public class ProductEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        ProductEntity product = (ProductEntity) o;
-        return productId != null && Objects.equals(productId, product.productId);
+        Order order = (Order) o;
+        return orderId != null && Objects.equals(orderId, order.orderId);
     }
 
     @Override

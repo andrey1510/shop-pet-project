@@ -2,7 +2,7 @@ package warehouse.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import warehouse.entities.OrderEntity;
+import warehouse.models.Order;
 import warehouse.services.OrderService;
 
 @RestController
@@ -17,7 +17,7 @@ public class OrderController {
     }
 
     @PostMapping
-    public OrderEntity createOrder(@RequestBody OrderEntity order) {
+    public Order createOrder(@RequestBody Order order) {
         return orderService.createOrder(order);
     }
 

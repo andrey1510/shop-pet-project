@@ -2,7 +2,7 @@ package warehouse.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import warehouse.entities.OrderEntity;
+import warehouse.models.Order;
 import warehouse.repositories.OrderRepository;
 
 @Service
@@ -12,7 +12,7 @@ public class OrderServiceImpl implements OrderService {
     private OrderRepository orderRepository;
 
     @Override
-    public OrderEntity createOrder(OrderEntity order) {
+    public Order createOrder(Order order) {
         return orderRepository.save(order);
     }
 

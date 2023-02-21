@@ -1,7 +1,7 @@
 package warehouse.repositories;
 
 import org.springframework.data.repository.CrudRepository;
-import warehouse.entities.AddressEntity;
+import warehouse.models.Address;
 
-public interface AddressRepository extends CrudRepository<AddressEntity, Integer> {
+public interface AddressRepository extends CrudRepository<Address, Integer> {
 }

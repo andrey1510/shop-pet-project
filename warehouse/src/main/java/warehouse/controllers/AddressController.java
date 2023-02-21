@@ -1,14 +1,14 @@
 package warehouse.controllers;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import warehouse.entities.AddressEntity;
+import warehouse.models.Address;
 import warehouse.services.AddressService;
-
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/address/")
+@Tag(name = "Address controller", description = "Address controller of Warehouse service")
 public class AddressController {
 
     private AddressService addressService;
@@ -19,7 +19,7 @@ public class AddressController {
     }
 
     @PostMapping
-    public AddressEntity createAddress(@RequestBody AddressEntity address) {
+    public Address createAddress(@RequestBody Address address) {
         return addressService.createAddress(address);
     }
 
