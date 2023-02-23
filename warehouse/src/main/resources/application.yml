@@ -1,27 +1,35 @@
-
-server:
-  port: 8088
-
 spring:
-  datasource:
-    url: jdbc:postgresql://127.0.0.1:5635/warehousebase
-    username: user
-    password: password
+
+#  datasource:                  # moved to docker-compose.yml
+#    url: jdbc:postgresql://db/warehousebase
+#    username: user
+#    password: password
 
   liquibase:
     change-log: classpath:db/changelog/changelog.sql
-    drop-first: true
+    drop-first: true          # drops database on each launch
 
-springdoc:
-  paths-to-match: /api/**
+
+springdoc:                    # swagger settings
+
+#  paths-to-match: # /api/**     # limitation of endpoints visible to swagger; /api/ shall added to @RequestMapping of each Controller
+#  paths-to-match:      # another variant
+#    - /addresses
+#    - /customers
+#    - /orders
+#    - /products
+
   swagger-ui:
-    path: /swagger-ui-warehouse.html
-    operationsSorter: method
-    tagsSorter: alpha
-    version: 3.0.3
-    enabled: false
+    enabled: true          # set false to turn off swagger
+    operations-sorter: alpha    # sets sorting order of operations
+    tagsSorter: alpha           # sets sorting order of tags
+    path: /sw.html        # changes path of swagger-ui to http://localhost:8088/sw.html
+    filter: true          # show tags search in swagger-ui
+
   api-docs:
-    path: /api-docs
+    path: /api-docs-warehouse
     enabled: true
+
+
 
 

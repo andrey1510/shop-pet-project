@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/customer/")
-@Tag(name = "Customer controller", description = "Customer controller of Warehouse service")
+@Tag(name = "Customer operations", description = "Customer controller of Warehouse service")
 public class CustomerController {
 
     private CustomerService customerService;

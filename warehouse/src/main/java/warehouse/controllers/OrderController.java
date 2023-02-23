@@ -1,5 +1,6 @@
 package warehouse.controllers;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import warehouse.models.Order;
@@ -7,6 +8,7 @@ import warehouse.services.OrderService;
 
 @RestController
 @RequestMapping("/order/")
+@Tag(name = "Order operations", description = "Order controller of Warehouse service")
 public class OrderController {
 
     private OrderService orderService;

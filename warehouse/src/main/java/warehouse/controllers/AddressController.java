@@ -8,7 +8,7 @@ import warehouse.services.AddressService;
 
 @RestController
 @RequestMapping("/address/")
-@Tag(name = "Address controller", description = "Address controller of Warehouse service")
+@Tag(name = "Address operations", description = "Address controller of Warehouse service")
 public class AddressController {
 
     private AddressService addressService;
