@@ -1,19 +1,27 @@
+# check docker-compose with filled values from .env:
+#  docker-compose --env-file=.env config          cmd in shop-pet-project\warehouse
+
 version: "3"
 
 services:
 
   db:
     container_name: warehouse-base
-    image: "postgres:12"
+    image: ${DB_IMAGE}
+    env_file: .env                    # link to .env file
     environment:
-      - POSTGRES_DB=warehousebase
-      - POSTGRES_USER=user
-      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=${DB_DATABASE}         #   ${variable} - link to value of variable in .env file
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+#      - DBDATA=/var/lib/postgresql/data/dbdata      #ToDO
+#    expose:             #ToDO
+#      - ${DB_LOCAL_PORT}
+#      - ${DB_DOCKER_PORT}
     ports:
-      - "5635:5432"
-    volumes:                # persist database data across restarts
-      - dbdata:/var/lib/postgresql/data
-    restart: unless-stopped
+      - ${DB_LOCAL_PORT}:${DB_DOCKER_PORT}
+#    volumes:                # persist database data across restarts
+#      - dbdata:/var/lib/postgresql/data/dbdata        #ToDO
+    restart: unless-stopped       #ToDO
 
   warehouse:
     container_name: warehouse-app
@@ -22,11 +30,17 @@ services:
     build:
       context: .
       dockerfile: /Dockerfile
+    env_file: .env
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db/warehousebase
-      - SPRING_DATASOURCE_USERNAME=user
-      - SPRING_DATASOURCE_PASSWORD=password
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db/${DB_DATABASE}
+      - SPRING_DATASOURCE_USERNAME=${DB_USER}
+      - SPRING_DATASOURCE_PASSWORD=${DB_PASSWORD}
+#      - SPRING_DATASOURCE_DBDATA=/var/lib/postgresql/data/dbdata        #ToDO
     depends_on:
       - db
+#    expose:             #ToDO
+#      - ${APP_LOCAL_PORT}
+#      - ${APP_DOCKER_PORT}
     ports:
-      - "8088:8080"
+      - ${APP_LOCAL_PORT}:${APP_DOCKER_PORT}
+    restart: unless-stopped

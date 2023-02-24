@@ -6,7 +6,7 @@ spring:
 #    password: password
 
   liquibase:
-    change-log: classpath:db/changelog/changelog.sql
+    change-log: classpath:db/changelog/changelog.yml
     drop-first: true          # drops database on each launch
 
 
