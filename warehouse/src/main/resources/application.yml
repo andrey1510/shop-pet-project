@@ -1,12 +1,17 @@
+server:
+  port: 8088
+
 spring:
 
-#  datasource:                  # moved to docker-compose.yml
-#    url: jdbc:postgresql://db/warehousebase
-#    username: user
-#    password: password
+  datasource:                  # moved to docker-compose.yml
+    url: jdbc:postgresql://localhost:5635/warehousebase
+    username: user
+    password: password
 
   liquibase:
-    change-log: classpath:db/changelog/changelog.sql
+    change-log: classpath:db/changelog.xml
+#    default-schema: public
+#    liquibase-schema: public
     drop-first: true          # drops database on each launch
 
 

@@ -3,7 +3,6 @@ package warehouse.models;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.Hibernate;
-
 import java.math.BigDecimal;
 import java.util.Objects;
 
@@ -13,13 +12,13 @@ import java.util.Objects;
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "order")
-public class Order {
+@Table(name = "deal")
+public class Deal {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "order_id", nullable = false)
-    private Integer orderId;
+    @Column(name = "deal_id", nullable = false)
+    private Integer dealId;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @MapsId
@@ -41,8 +40,8 @@ public class Order {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        Order order = (Order) o;
-        return orderId != null && Objects.equals(orderId, order.orderId);
+        Deal order = (Deal) o;
+        return dealId != null && Objects.equals(dealId, order.dealId);
     }
 
     @Override

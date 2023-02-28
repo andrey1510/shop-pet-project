@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import warehouse.models.Address;
 import warehouse.repositories.AddressRepository;
 
+import java.util.Optional;
+
 @Service
 public class AddressServiceImpl implements AddressService {
 
@@ -20,4 +22,10 @@ public class AddressServiceImpl implements AddressService {
     public void deleteAddressById(Integer addressId) {
         addressRepository.deleteById(addressId);
     }
+
+    @Override
+    public Optional<Address> getAddressById(Integer addressId) {
+        return addressRepository.findById(addressId);
+    }
+
 }

@@ -23,24 +23,24 @@ services:
 #      - dbdata:/var/lib/postgresql/data/dbdata        #ToDO
     restart: unless-stopped       #ToDO
 
-  warehouse:
-    container_name: warehouse-app
-#    build: .                    # alternative variant
-#    build: ./Dockerfile         # alternative variant
-    build:
-      context: .
-      dockerfile: /Dockerfile
-    env_file: .env
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db/${DB_DATABASE}
-      - SPRING_DATASOURCE_USERNAME=${DB_USER}
-      - SPRING_DATASOURCE_PASSWORD=${DB_PASSWORD}
-#      - SPRING_DATASOURCE_DBDATA=/var/lib/postgresql/data/dbdata        #ToDO
-    depends_on:
-      - db
-#    expose:             #ToDO
-#      - ${APP_LOCAL_PORT}
-#      - ${APP_DOCKER_PORT}
-    ports:
-      - ${APP_LOCAL_PORT}:${APP_DOCKER_PORT}
-    restart: unless-stopped
+#  warehouse:
+#    container_name: warehouse-app
+##    build: .                    # alternative variant
+##    build: ./Dockerfile         # alternative variant
+#    build:
+#      context: .
+#      dockerfile: /Dockerfile
+#    env_file: .env
+#    environment:
+#      - SPRING_DATASOURCE_URL=jdbc:postgresql://db/${DB_DATABASE}
+#      - SPRING_DATASOURCE_USERNAME=${DB_USER}
+#      - SPRING_DATASOURCE_PASSWORD=${DB_PASSWORD}
+##      - SPRING_DATASOURCE_DBDATA=/var/lib/postgresql/data/dbdata        #ToDO
+#    depends_on:
+#      - db
+##    expose:             #ToDO
+##      - ${APP_LOCAL_PORT}
+##      - ${APP_DOCKER_PORT}
+#    ports:
+#      - ${APP_LOCAL_PORT}:${APP_DOCKER_PORT}
+#    restart: unless-stopped

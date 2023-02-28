@@ -1,6 +1,7 @@
 package warehouse.controllers;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import warehouse.exceptions.CustomerNotFoundException;
@@ -11,15 +12,11 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/customer/")
-@Tag(name = "Customer operations", description = "Customer controller of Warehouse service")
+@RequiredArgsConstructor
+@Tag(name = "customer_operations", description = "Customer controller of Warehouse service")
 public class CustomerController {
 
-    private CustomerService customerService;
-
-    @Autowired
-    public CustomerController(CustomerService customerService) {
-        this.customerService = customerService;
-    }
+    private final CustomerService customerService;
 
     @PostMapping
     public Customer createCustomer(@RequestBody Customer customer) {
@@ -32,10 +29,10 @@ public class CustomerController {
     }
 
     @GetMapping("{customer_id}")
+    @Tag(name = "get_customer_by_id")
     public Optional<Customer> getCustomerById(@PathVariable("customer_id") Integer customerId) {
         return Optional.ofNullable(customerService.getCustomerById(customerId)
                 .orElseThrow(CustomerNotFoundException::new));
     }
-
 
 }

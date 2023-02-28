@@ -1,22 +1,20 @@
 package warehouse.controllers;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import warehouse.models.Address;
 import warehouse.services.AddressService;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/address/")
+@RequiredArgsConstructor
 @Tag(name = "Address operations", description = "Address controller of Warehouse service")
 public class AddressController {
 
-    private AddressService addressService;
-
-    @Autowired
-    public AddressController(AddressService addressService) {
-        this.addressService = addressService;
-    }
+    private final AddressService addressService;
 
     @PostMapping
     public Address createAddress(@RequestBody Address address) {
@@ -26,6 +24,11 @@ public class AddressController {
     @DeleteMapping("{address_id}")
     void deleteAddressById(@PathVariable("address_id") Integer addressId) {
         addressService.deleteAddressById(addressId);
+    }
+
+    @GetMapping("{address_id}")
+    public Optional<Address> getAddressById(@PathVariable("address_id") Integer addressId) {
+        return addressService.getAddressById(addressId);
     }
 
 }

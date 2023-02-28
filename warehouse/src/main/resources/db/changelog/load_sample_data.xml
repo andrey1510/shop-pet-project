@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="load-customers" author="Andrey">
+        <sql splitStatements="false" stripComments="false">
+            INSERT INTO customer(first_name, last_name, balance, phone, email) VALUES ('John', 'Smith', 100, '8 445 654', 'john-smith@inbox.net');
+            INSERT INTO customer(first_name, last_name, balance, phone, email) VALUES ('Sam', 'Black', 200 ,'8 433 565', 'sam.black@test.com');
+            INSERT INTO customer(first_name, last_name, balance, phone, email) VALUES ('Michael', 'Green', 300, '8 342 534', 'inbox@mail.com');
+            INSERT INTO customer (first_name, last_name, balance, phone, email) VALUES ('Jack', 'Black', 120, '8 675 232', 'bl@mail.co');
+        </sql>
+    </changeSet>
+
+    <changeSet id="load-products" author="Andrey">
+        <sql splitStatements="false" stripComments="false">
+            INSERT INTO product(title, price, quantity) VALUES ('table', 100, 5);
+            INSERT INTO product(title, price, quantity) VALUES ('chair', 50, 24);
+            INSERT INTO product(title, price, quantity) VALUES ('bed', 150, 8);
+        </sql>
+    </changeSet>
+
+    <changeSet id="load-deals" author="Andrey">
+        <sql splitStatements="false" stripComments="false">
+            INSERT INTO deal(customer_fk_id, product_fk_id, quantity) VALUES (1, 1, 2);
+            INSERT INTO deal(customer_fk_id, product_fk_id, quantity) VALUES (2, 3, 1);
+        </sql>
+    </changeSet>
+
+    <changeSet id="load-addresses" author="Andrey">
+        <sql splitStatements="false" stripComments="false">
+            INSERT INTO address(customer_fk_id, country, postal_code, city, address_line) VALUES (1, 'Ireland', '343D3', 'Dublin', 'Red street 4');
+            INSERT INTO address(customer_fk_id, country, postal_code, city, address_line) VALUES (1, 'Italy', '54632', 'Milan', 'Green street 3');
+            INSERT INTO address(customer_fk_id, country, postal_code, city, address_line) VALUES (2, 'Japan', 'F3434', 'Tokyo', 'Brown street 4');
+            INSERT INTO address(customer_fk_id, country, postal_code, city, address_line) VALUES (3, 'Italy', '8454', 'Rome', 'Black street 4');
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

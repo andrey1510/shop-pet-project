@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import warehouse.models.Product;
 import warehouse.repositories.ProductRepository;
 
+import java.util.Optional;
+
 @Service
 public class ProductServiceImpl implements ProductService {
 
@@ -20,4 +22,10 @@ public class ProductServiceImpl implements ProductService {
     public void deleteProductById(Integer productId) {
         productRepository.deleteById(productId);
     }
+
+    @Override
+    public Optional<Product> getProductById(Integer productId) {
+        return productRepository.findById(productId);
+    }
+
 }
