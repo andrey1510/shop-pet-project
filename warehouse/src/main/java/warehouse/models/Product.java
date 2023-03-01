@@ -5,13 +5,13 @@ import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.hibernate.Hibernate;
 
+import java.util.List;
 import java.util.Objects;
 
-@Getter
-@Setter
-@ToString
-@RequiredArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Data
 @Entity
 @Table(name = "product")
 public class Product {
@@ -20,6 +20,9 @@ public class Product {
     @Id
     @Column(name = "product_id", nullable = false)
     private Integer productId;
+
+//    @OneToMany(mappedBy="product")
+//    private List<Deal> deal;
 
     @Basic
     @Column(name = "title", nullable = false, length = 255)
@@ -30,20 +33,8 @@ public class Product {
     private Integer price;
 
     @Basic
-    @Size(min = 0, max = 1000)
+    @Size(min = 0, max = 100000)
     @Column(name = "quantity", nullable = false)
     private Integer quantity;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        Product product = (Product) o;
-        return productId != null && Objects.equals(productId, product.productId);
-    }
-
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
-    }
 }

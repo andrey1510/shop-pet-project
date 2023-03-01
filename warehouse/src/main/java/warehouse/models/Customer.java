@@ -7,11 +7,10 @@ import org.hibernate.Hibernate;
 import java.util.List;
 import java.util.Objects;
 
-@Getter
-@Setter
-@ToString
-@RequiredArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Data
 @Entity
 @Table(name = "customer")
 public class Customer {
@@ -21,8 +20,11 @@ public class Customer {
     @Column(name = "customer_id", nullable = false)
     private Integer customerId;
 
-    @OneToMany(mappedBy="customers")
-    private List<Address> addresses;
+//    @OneToMany(mappedBy="customer")
+//    private List<Address> address;
+//
+//    @OneToMany(mappedBy="customer")
+//    private List<Deal> deal;
 
     @Basic
     @Column(name = "first_name", nullable = false, length = 255)
@@ -44,16 +46,4 @@ public class Customer {
     @Column(name = "email", nullable = true, length = 255)
     private String email;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        Customer customer = (Customer) o;
-        return customerId != null && Objects.equals(customerId, customer.customerId);
-    }
-
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
-    }
 }

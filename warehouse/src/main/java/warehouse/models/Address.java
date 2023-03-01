@@ -7,11 +7,10 @@ import org.hibernate.Hibernate;
 import java.util.Objects;
 
 
-@Getter
-@Setter
-@ToString
-@RequiredArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Data
 @Entity
 @Table(name = "address")
 public class Address {
@@ -21,9 +20,10 @@ public class Address {
     @Column(name = "address_id", nullable = false)
     private Integer addressId;
 
-    @ManyToOne
-    @JoinColumn(name="customer_fk_id", nullable=true)
-    private Customer customers;
+    @ManyToOne(fetch = FetchType.LAZY, // .EAGER        // LAZY for initialization of Addresses related to Customer on explicit call; EAGER - immediate initialization of Addresses related to Customer
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE}) // .ALL,       // ALL propagates all operations
+    @JoinColumn(name="customer_fk_id")
+    private Customer customer;
 
     @Basic
     @Column(name = "country", nullable = true, length = 255)
@@ -41,16 +41,5 @@ public class Address {
     @Column(name = "address_line", nullable = true, length = 255)
     private String addressLine;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        Address address = (Address) o;
-        return addressId != null && Objects.equals(addressId, address.addressId);
-    }
 
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
-    }
 }
