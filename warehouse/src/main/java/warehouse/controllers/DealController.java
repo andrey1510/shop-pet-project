@@ -8,7 +8,7 @@ import warehouse.services.DealService;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/deal/")
+@RequestMapping("/api/deal/")
 @RequiredArgsConstructor
 @Tag(name = "Deal operations", description = "Deal controller of Warehouse service")
 public class DealController {

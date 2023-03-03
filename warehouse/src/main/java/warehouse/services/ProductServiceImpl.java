@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import warehouse.models.Product;
 import warehouse.repositories.ProductRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -27,5 +28,6 @@ public class ProductServiceImpl implements ProductService {
     public Optional<Product> getProductById(Integer productId) {
         return productRepository.findById(productId);
     }
+
 
 }

@@ -9,7 +9,7 @@ import warehouse.services.AddressService;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/address/")
+@RequestMapping("/api/address/")
 @RequiredArgsConstructor
 @Tag(name = "Address operations", description = "Address controller of Warehouse service")
 public class AddressController {

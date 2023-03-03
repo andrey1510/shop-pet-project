@@ -1,7 +1,6 @@
 package warehouse.services;
 
 import warehouse.models.Deal;
-
 import java.util.Optional;
 
 public interface DealService {

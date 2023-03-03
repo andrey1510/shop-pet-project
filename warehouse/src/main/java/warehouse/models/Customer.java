@@ -2,10 +2,6 @@ package warehouse.models;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.Hibernate;
-
-import java.util.List;
-import java.util.Objects;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,11 +16,8 @@ public class Customer {
     @Column(name = "customer_id", nullable = false)
     private Integer customerId;
 
-//    @OneToMany(mappedBy="customer")
-//    private List<Address> address;
-//
-//    @OneToMany(mappedBy="customer")
-//    private List<Deal> deal;
+    @OneToOne(mappedBy="customer", cascade = {CascadeType.ALL})
+    private Address address;
 
     @Basic
     @Column(name = "first_name", nullable = false, length = 255)

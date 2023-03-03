@@ -20,6 +20,7 @@
             INSERT INTO product(title, price, quantity) VALUES ('table', 100, 5);
             INSERT INTO product(title, price, quantity) VALUES ('chair', 50, 24);
             INSERT INTO product(title, price, quantity) VALUES ('bed', 150, 8);
+            INSERT INTO product(title, price, quantity) VALUES ('bed', 23, 1);
         </sql>
     </changeSet>
 
@@ -32,10 +33,10 @@
 
     <changeSet id="load-addresses" author="Andrey">
         <sql splitStatements="false" stripComments="false">
-            INSERT INTO address(customer_fk_id, country, postal_code, city, address_line) VALUES (1, 'Ireland', '343D3', 'Dublin', 'Red street 4');
-            INSERT INTO address(customer_fk_id, country, postal_code, city, address_line) VALUES (1, 'Italy', '54632', 'Milan', 'Green street 3');
-            INSERT INTO address(customer_fk_id, country, postal_code, city, address_line) VALUES (2, 'Japan', 'F3434', 'Tokyo', 'Brown street 4');
-            INSERT INTO address(customer_fk_id, country, postal_code, city, address_line) VALUES (3, 'Italy', '8454', 'Rome', 'Black street 4');
+            INSERT INTO address(address_id, country, postal_code, city, address_line) VALUES (1, 'Ireland', '343D3', 'Dublin', 'Red street 4');
+            INSERT INTO address(address_id, country, postal_code, city, address_line) VALUES (2, 'Italy', '54632', 'Milan', 'Green street 3');
+            INSERT INTO address(address_id, country, postal_code, city, address_line) VALUES (3, 'Japan', 'F3434', 'Tokyo', 'Brown street 4');
+            INSERT INTO address(address_id, country, postal_code, city, address_line) VALUES (4, 'Italy', '8454', 'Rome', 'Black street 4');
         </sql>
     </changeSet>
 

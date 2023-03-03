@@ -1,7 +1,6 @@
 package warehouse.services;
 
 import warehouse.models.Customer;
-
 import java.util.Optional;
 
 public interface CustomerService {

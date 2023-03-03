@@ -17,7 +17,7 @@ spring:
 
 springdoc:                    # swagger settings
 
-#  paths-to-match: # /api/**     # limitation of endpoints visible to swagger; /api/ shall added to @RequestMapping of each Controller
+  paths-to-match: /api/**     # limitation of endpoints visible to swagger; /api/ shall added to @RequestMapping of each Controller
 #  paths-to-match:      # another variant
 #    - /addresses
 #    - /customers
@@ -34,7 +34,3 @@ springdoc:                    # swagger settings
   api-docs:
     path: /api-docs-warehouse
     enabled: true
-
-
-
-

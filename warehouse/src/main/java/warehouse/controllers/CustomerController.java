@@ -2,7 +2,6 @@ package warehouse.controllers;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import warehouse.exceptions.CustomerNotFoundException;
 import warehouse.models.Customer;
@@ -11,7 +10,7 @@ import warehouse.services.CustomerService;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/customer/")
+@RequestMapping("/api/customer/")
 @RequiredArgsConstructor
 @Tag(name = "customer_operations", description = "Customer controller of Warehouse service")
 public class CustomerController {

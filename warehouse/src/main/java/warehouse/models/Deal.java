@@ -2,9 +2,6 @@ package warehouse.models;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.Hibernate;
-import java.math.BigDecimal;
-import java.util.Objects;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,7 +17,6 @@ public class Deal {
     private Integer dealId;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-//    @MapsId
     @JoinColumn(name="customer_fk_id")
     private Customer customer;
 

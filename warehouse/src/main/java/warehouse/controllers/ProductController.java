@@ -5,11 +5,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import warehouse.models.Product;
 import warehouse.services.ProductService;
-
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/product/")
+@RequestMapping("/api/product/")
 @RequiredArgsConstructor
 @Tag(name = "Product operations", description = "Product controller of Warehouse service")
 public class ProductController {
@@ -30,6 +29,9 @@ public class ProductController {
     public Optional<Product> getProductById(@PathVariable("product_id") Integer productId) {
         return productService.getProductById(productId);
     }
+
+
+
 
 
 }

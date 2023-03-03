@@ -2,10 +2,6 @@ package warehouse.models;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.Hibernate;
-
-import java.util.Objects;
-
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,9 +16,9 @@ public class Address {
     @Column(name = "address_id", nullable = false)
     private Integer addressId;
 
-    @ManyToOne(fetch = FetchType.LAZY, // .EAGER        // LAZY for initialization of Addresses related to Customer on explicit call; EAGER - immediate initialization of Addresses related to Customer
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE}) // .ALL,       // ALL propagates all operations
-    @JoinColumn(name="customer_fk_id")
+    @OneToOne(fetch = FetchType.EAGER, // .EAGER        // LAZY for initialization of Addresses related to Customer on explicit call; EAGER - immediate initialization of Addresses related to Customer
+            cascade = {CascadeType.ALL})
+    @JoinColumn(name="address_id")
     private Customer customer;
 
     @Basic

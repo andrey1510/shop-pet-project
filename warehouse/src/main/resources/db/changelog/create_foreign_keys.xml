@@ -9,7 +9,7 @@
     <changeSet id="create-foreign-keys" author="Andrey">
         <sql splitStatements="false" stripComments="false">
 
-            ALTER TABLE "address" ADD CONSTRAINT "fk_address_customer_1" FOREIGN KEY ("customer_fk_id") REFERENCES "customer" ("customer_id");
+            ALTER TABLE "address" ADD CONSTRAINT "fk_address_customer_1" FOREIGN KEY ("address_id") REFERENCES "customer" ("customer_id");
             ALTER TABLE "deal" ADD CONSTRAINT "fk_purchase_customer_1" FOREIGN KEY ("customer_fk_id") REFERENCES "customer" ("customer_id");
             ALTER TABLE "deal" ADD CONSTRAINT "fk_purchase_product_1" FOREIGN KEY ("product_fk_id") REFERENCES "product" ("product_id");
 
