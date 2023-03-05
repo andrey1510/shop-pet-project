@@ -1,40 +1,45 @@
 package warehouse.models;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.*;
 
+import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.NOT_REQUIRED;
+import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.REQUIRED;
+
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @Data
 @Entity
 @Table(name = "address")
 public class Address {
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+   // @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "address_id", nullable = false)
+   // @Schema(hidden = true)
     private Integer addressId;
 
-    @OneToOne(fetch = FetchType.EAGER, // .EAGER        // LAZY for initialization of Addresses related to Customer on explicit call; EAGER - immediate initialization of Addresses related to Customer
+    @OneToOne(fetch = FetchType.EAGER,
             cascade = {CascadeType.ALL})
     @JoinColumn(name="address_id")
+    //@Schema(hidden = true)
     private Customer customer;
 
-    @Basic
-    @Column(name = "country", nullable = true, length = 255)
+    @Column(name = "country", nullable = false, length = 255)
+    @Schema(requiredMode = REQUIRED, example = "Greece")
     private String country;
 
-    @Basic
     @Column(name = "postal_code", nullable = true, length = 255)
+    @Schema(requiredMode = NOT_REQUIRED, example = "42334")
     private String postalCode;
 
-    @Basic
-    @Column(name = "city", nullable = true, length = 255)
+    @Column(name = "city", nullable = false, length = 255)
+    @Schema(requiredMode = REQUIRED, example = "Moscow")
     private String city;
 
-    @Basic
-    @Column(name = "address_line", nullable = true, length = 255)
+    @Column(name = "address_line", nullable = false, length = 255)
+    @Schema(requiredMode = NOT_REQUIRED, example = "Test street 4, apt. 404")
     private String addressLine;
 
 

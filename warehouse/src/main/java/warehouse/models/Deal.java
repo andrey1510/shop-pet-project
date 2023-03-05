@@ -1,11 +1,11 @@
 package warehouse.models;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @Data
 @Entity
 @Table(name = "deal")
@@ -14,6 +14,7 @@ public class Deal {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "deal_id", nullable = false)
+    @Schema(hidden = true)
     private Integer dealId;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
@@ -24,7 +25,6 @@ public class Deal {
     @JoinColumn(name="product_fk_id")
     private Product product;
 
-    @Basic
     @Column(name = "quantity", nullable = false)
     private Integer quantity;
 

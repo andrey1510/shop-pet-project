@@ -12,9 +12,14 @@ import java.util.List;
 @Transactional
 public interface CustomerRepository extends JpaRepository<Customer, Integer> {
 
+    @Query(value = "SELECT COUNT(customer_id) FROM customer", nativeQuery = true)
+    Integer countByCustomerId();
+
+
     List<Customer> findByFirstNameAndLastNameOrderByLastNameDesc(String firstName, String lastName);
     List<Customer> findByFirstNameOrLastNameIgnoreCase(String firstName, String lastName);
     List<Customer> findByPhone(String phone);
+
     List<Customer> findByEmail(String email);
 
     @Query(value = "SELECT * FROM customer WHERE first_name = :firstName AND balance > :balance", nativeQuery = true)

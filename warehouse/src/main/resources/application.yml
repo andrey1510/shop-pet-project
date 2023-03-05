@@ -34,3 +34,4 @@ springdoc:                    # swagger settings
   api-docs:
     path: /api-docs-warehouse
     enabled: true
+

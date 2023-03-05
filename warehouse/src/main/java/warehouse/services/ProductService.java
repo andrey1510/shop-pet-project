@@ -14,4 +14,13 @@ public interface ProductService {
 
     Optional<Product> getProductById(Integer productId);
 
+    List<Product> findByTitle(String title);
+
+    Integer countByProductId();
+
+    List<Product> selectProductOverMinimumPrice(Integer price);
+
+    Product updateTitleAndPriceAndQuantityByProductId(String title, Integer price, Integer quantity, Integer productId);
+
+
 }

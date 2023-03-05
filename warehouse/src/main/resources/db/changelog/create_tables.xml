@@ -38,7 +38,7 @@
             CREATE TABLE "address" (
                 "address_id" int4 NOT NULL,
                 "country" varchar(255) NOT NULL,
-                "postal_code" varchar(255) NOT NULL,
+                "postal_code" varchar(255),
                 "city" varchar(255) NOT NULL,
                 "address_line" varchar(255) NOT NULL,
                 PRIMARY KEY ("address_id")

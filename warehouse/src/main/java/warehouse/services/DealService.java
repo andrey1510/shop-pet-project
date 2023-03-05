@@ -1,6 +1,9 @@
 package warehouse.services;
 
+import warehouse.models.Customer;
 import warehouse.models.Deal;
+
+import java.util.List;
 import java.util.Optional;
 
 public interface DealService {
@@ -11,4 +14,7 @@ public interface DealService {
 
     Optional<Deal> getDealById(Integer dealId);
 
+    List<Deal> findALlDeals();
+
+    Integer countByDealId();
 }
