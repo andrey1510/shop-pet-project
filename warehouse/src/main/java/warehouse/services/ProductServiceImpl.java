@@ -51,7 +51,7 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.selectProductOverMinimumPrice(price);
     }
     @Override
-    public Product updateTitleAndPriceAndQuantityByProductId(String title, Integer price, Integer quantity, Integer productId) {
+    public void updateTitleAndPriceAndQuantityByProductId(String title, Integer price, Integer quantity, Integer productId) {
         productRepository.updateTitleAndPriceAndQuantityByProductId(title, price, quantity, productId);
     }
 

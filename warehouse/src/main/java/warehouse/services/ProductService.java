@@ -20,7 +20,7 @@ public interface ProductService {
 
     List<Product> selectProductOverMinimumPrice(Integer price);
 
-    Product updateTitleAndPriceAndQuantityByProductId(String title, Integer price, Integer quantity, Integer productId);
+    void updateTitleAndPriceAndQuantityByProductId(String title, Integer price, Integer quantity, Integer productId);
 
 
 }

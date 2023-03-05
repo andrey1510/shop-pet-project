@@ -34,11 +34,11 @@ public class ProductController {
     }
 
     @GetMapping("{product_id}")
-//    @Operation(description = "Get product by its ID.",
+    @Operation(description = "Get product by its ID.")
 //            responses = {
 //                    @ApiResponse(responseCode = "200", description = "Product found"),
 //                    @ApiResponse(responseCode = "404", description = "Product not found")}
-//    )
+
     public Optional<Product> getProductById(@PathVariable("product_id") Integer productId) {
         return productService.getProductById(productId);
     }
@@ -63,9 +63,9 @@ public class ProductController {
 
     @PutMapping("{product_id}")
     @Operation(description = "Update a product.")
-    public Product updateTitleAndPriceAndQuantityByProductId (
+    public void updateTitleAndPriceAndQuantityByProductId (
             @PathVariable("product_id") Integer productId, @RequestBody Product product) {
-        return productService.updateTitleAndPriceAndQuantityByProductId(product);
+        productService.updateTitleAndPriceAndQuantityByProductId(product.getTitle(), product.getPrice(), product.getQuantity(), productId);
     }
 
   //  public void updateTitleAndPriceAndQuantityByProductId(String title, Integer price, Integer quantity, Integer productId) {

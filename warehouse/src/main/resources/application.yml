@@ -3,6 +3,9 @@ server:
 
 spring:
 
+  jpa:
+    show-sql: true
+
   datasource:                  # moved to docker-compose.yml
     url: jdbc:postgresql://localhost:5635/warehousebase
     username: user
@@ -13,7 +16,6 @@ spring:
 #    default-schema: public
 #    liquibase-schema: public
     drop-first: true          # drops database on each launch
-
 
 springdoc:                    # swagger settings
 
